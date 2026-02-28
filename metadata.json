@@ -1,0 +1,5 @@
+{
+  "name": "Minecraft Chat",
+  "description": "A Minecraft Ore UI styled chat application with file transfer and reply features.",
+  "requestFramePermissions": []
+}
