@@ -122,13 +122,13 @@ export default function Chat() {
       .from("messages")
       .select("*")
       .eq('channel_id', currentChannel.id)
-      .order("created_at", { ascending: true })
+      .order("created_at", { ascending: false })
       .limit(100);
 
     if (error) {
       console.error("Error fetching messages:", error);
     } else {
-      setMessages(data || []);
+      setMessages(data ? data.reverse() : []);
     }
   };
 
