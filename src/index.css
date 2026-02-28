@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mc-ten: "Minecraft Ten", sans-serif;
+  --font-mc-five: "Minecraft Five Bold", sans-serif;
+  --font-mc-seven: "Minecraft Seven", "Minecraft AE", sans-serif;
+  --font-mc-ae: "Minecraft AE", sans-serif;
+
+  --color-ore-bg: #313233;
+  --color-ore-panel: #48494a;
+  --color-ore-border: #1e1e1f;
+  --color-ore-border-light: #5c5c5c;
+  --color-ore-green: #3c8527;
+  --color-ore-green-hover: #337121;
+  --color-ore-text: #ffffff;
+  --color-ore-text-muted: #b3b3b3;
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Minecraft Ten';
+    src: url('/fonts/Minecraft-Ten.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Minecraft Five Bold';
+    src: url('/fonts/Minecraft-Five-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Minecraft Seven';
+    src: url('/fonts/Minecraft-Seven-v4.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Minecraft AE';
+    /* Assuming user has this font or will add it */
+    src: url('/fonts/Minecraft-AE.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    @apply bg-ore-bg text-ore-text font-mc-seven antialiased;
+    /* Pixelated rendering for images/canvas if needed */
+    image-rendering: pixelated;
+  }
+
+  /* Custom Scrollbar for Ore UI */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-ore-bg border-l border-ore-border;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ore-panel border-2 border-ore-bg;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ore-border-light;
+  }
+}
+
+@layer components {
+  .ore-btn {
+    @apply bg-ore-green hover:bg-ore-green-hover text-white px-4 py-2 border-2 border-b-4 border-ore-border active:border-b-2 active:translate-y-[2px] transition-all font-mc-five tracking-wider uppercase;
+  }
+  
+  .ore-panel {
+    @apply bg-ore-panel border-2 border-ore-border shadow-[inset_0_0_0_2px_rgba(255,255,255,0.1)];
+  }
+  
+  .ore-input {
+    @apply bg-ore-bg border-2 border-ore-border text-white px-3 py-2 focus:outline-none focus:border-ore-green font-mc-seven placeholder-ore-text-muted;
+  }
+}
