@@ -24,7 +24,9 @@ class SoundManager {
     ];
 
     soundFiles.forEach(name => {
-      const audio = new Audio(`/sounds/${name}.ogg`);
+      const basePath = import.meta.env.BASE_URL || '/';
+      const cleanBasePath = basePath.endsWith('/') ? basePath : basePath + '/';
+      const audio = new Audio(`${cleanBasePath}sounds/${name}.ogg`);
       audio.preload = 'auto';
       this.sounds[name] = audio;
     });
